@@ -2,6 +2,7 @@
 """
 Created on Mon May  7 14:25:50 2018
 backward particle track for one week at different starttime
+then run  draw_backward_particle_tracking.py  to plot a figure
 @author: huimin
 """
 
@@ -87,11 +88,6 @@ for i in range(len(data['lon'])):
     url_time='http://www.smast.umassd.edu:8080/thredds/dodsC/models/fvcom/NECOFS/Archive/NECOFS_MASS_BAY/2017/mbn_201708.nc?time[0:1:743]'
     ds = Dataset(url_time,'r').variables
     
-    #index1=(start_time-datetime(1858,11,17,00,00,00)).days+(start_time-datetime(1858,11,17,00,00,00)).seconds/(60*60*24)
-    #index2=(end_time-datetime(1858,11,17,00,00,00)).days+(end_time-datetime(1858,11,17,00,00,00)).seconds/(60*60*24)
-    #ind1=np.argmin(abs(np.array(ds['time'])-index1))
-    #ind2=np.argmin(abs(np.array(ds['time'])-index2))
-    
     ind1=(start_time-datetime(2017,8,1,00,00,00)).days*24+(start_time-datetime(2017,8,1,00,00,00)).seconds/(60*60)
     ind2=(end_time-datetime(2017,8,1,00,00,00)).days*24+(end_time-datetime(2017,8,1,00,00,00)).seconds/(60*60)
     if ind2<0:#the dataset is from (2017,8,1,0,0,0)
@@ -114,9 +110,7 @@ for i in range(len(data['lon'])):
     url1='''http://www.smast.umassd.edu:8080/thredds/dodsC/models/fvcom/NECOFS/Archive/NECOFS_MASS_BAY/2017/mbn_201708.nc?u[{0}:1:{1}][0][0:1:165094],v[{0}:1:{1}][0][0:1:165094]'''
     url1 = url1.format(ind2, ind1)
     ds1 = Dataset(url1,'r').variables
-    #########################################################
-
-    
+    #########################################################  
     d=[]
     for b in np.arange(len(lon_model)):
         d.append((lon-lon_model[b])*(lon-lon_model[b])+(lat-lat_model[b])*(lat-lat_model[b]))
@@ -178,5 +172,3 @@ for i in range(len(data['lon'])):
 np.save(filepath+'lonmassbay',lonmassbay)
 np.save(filepath+'latmassbay',latmassbay)
 np.save(filepath+'timemassbay',timemassbay)
-
-ax.axis([-70.3,-69.4,41.5,41.9]) 
