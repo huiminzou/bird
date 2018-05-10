@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """
 Created on Thu May 10 10:15:36 2018
-
+backward and forward particle tracking for one week ,start at different time
 @author: huimin
 """
 
