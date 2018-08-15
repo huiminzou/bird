@@ -1,6 +1,10 @@
 # -*- coding: utf-8 -*-
 """
 Created on Mon Apr 30 12:16:42 2018
+To run this program,you need these input file:
+1.'Copy of GRSH_locations_082017.csv'
+2.'for_kevin_ferry_sample.csv'
+3.'necscoast_worldvec.dat'(find in this links: https://github.com/xiaojianliu/cape-cod-bay-last-two-picture-new/blob/master/necscoast_worldvec.dat
 
 @author: huimin
 """
